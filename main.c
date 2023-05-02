@@ -1,19 +1,20 @@
 #include <stdio.h>
 #include <conio.h>
+#include <string.h>
 #include "get_choice.h"
 
 int main()
 {
-  int choice;
-  char choices[][128] = {"This is choice 1", "This is choice 2", "This is choice 3", "This is choice 4", "This is choice 5", "This is choice 6", "This is choice 7"};
+  int *choice;
+  char choices[][3][128] = {
+      {"Choice 1", "Choice 2", "Choice 3"},
+      {"Choice 4", "Choice 5", "Choice 6"},
+      {"Choice 7", "Choice 8", "Choice 9"}};
 
-  choice = get_choice(7, choices);
+  choice = get_table_choice(3, 3, choices);
 
-  if (choice == -1)
-  {
-    printf("Exiting...\n");
-    return 0;
-  }
+  if (choice[0] == -1)
+    printf("No choice selected");
   else
-    printf("You chose: %s\n", choices[choice]);
+    printf("Choice selected: %s", choices[choice[0]][choice[1]]);
 }
