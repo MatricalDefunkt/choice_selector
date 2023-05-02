@@ -24,7 +24,7 @@ int get_choice(int num_choices, char choices[][128])
     }
 
     // Get user input
-    char input = getch();
+    int input = getch();
 
     if (input == '\r')
     {
@@ -51,9 +51,8 @@ int get_choice(int num_choices, char choices[][128])
         choice++;
     }
 
-    // Clear previous choices and reprint
+    // Clear previous choices
     for (int i = 0; i < num_choices + 1; i++)
       printf("\033[A\033[2K");
   }
 }
-
